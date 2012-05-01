@@ -8,6 +8,7 @@ gem 'acts-as-taggable-on', '~> 2.2.2'
 gem 'simple_form'
 gem "haml-rails"
 gem 'rails_autolink'
+gem 'bcrypt-ruby'
 
 group :development do
 	gem 'sqlite3'

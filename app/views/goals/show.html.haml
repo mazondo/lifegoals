@@ -10,8 +10,23 @@
       .form-inputs
         = f.input_field :body, :as => "string", :class => "span6 offset1", :placeholder => "Just ran 3 miles add #intermediate and remove -beginner now 50% complete"
         = f.button :submit, "Report In"
-    .updates
-      = render @goal.comments
+    - unless @goal.comments.blank?
+      .updates
+        = render @goal.comments
+    - else
+      .well
+        %h2 Congratulations on creating your goal!
+        %p
+          Now let's start making some progress.  To log an update for your goal, just enter some content in the bar above.  This is a great way to give yourself tips, track how you're doing or just make a note.
+        %p
+          %strong Tags:
+          You can add tags to your goal by making a comment above and including #tag_name in it.  For example, if this is a career goal, you can make the comment "looking to imrpove my #career"
+          %br
+          %br
+          You can remove tags by making another comment and including -tag_name
+        %p
+          %strong Progress Updates:
+          You can monitor how close you are to reaching your goal by including a percentage in your update.  For example, "woohoo! 50% done!" will make the goal has half completed!
   .span4
     .well
       %h3 Goal Status
@@ -23,9 +38,12 @@
       = f.input_field :title, :placeholder => "What needs to happen?", :class => "span4"
     %ul.checklist
       = render @goal.todos
+    - @goal.comments.tag_counts_on(:tags).each do |t|
+      %h3
+        = t.name.plural
+        = "(#{t.count})"
+      = render @goal.comments.tagged_with(t.name).limit(5)
     %h3 Sentiment
     %p this is where I'll record a graph on how I feel about how each goal is going.  things like going well, progressing, difficult, challenging, etc.... Can be anything really, I'd like to record this sentiment with a SIMPLE graph, maybe even avoid numbers and use smiley faces instead...
-    %h3 Inspiration
-    %p this is where we will list iems from the comments that were recorded as inspiring.  can be quotes, websites, tips, tricks, photos, etc...  We will list a random sampling of them with a link to view them all...
     %h3 Email Options
     %p Options to send an email to me or my phone every day, week, month, or if I haven't checked in in x number of days

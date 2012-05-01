@@ -12,11 +12,21 @@
 	  <div class="navbar-inner">
 	    <div class="container">
 				<%= link_to "LifeGoals", root_path, :class => "brand" %>
+				<ul class="pull-right nav">
+					<% if current_user %>
+					<li><%= link_to "Hey, Stranger!", user_path(current_user) %></li>
+					<li><%= link_to "Logout", logout_path %>
+					<% else %>
+					<li><%= link_to "Login", new_session_path %></li>
+					<li><%= link_to "Signup", new_user_path %></li>
+					<% end %>
+				</ul>
 	    </div>
 	  </div>
 	</div>
 	<div class="hidden-phone" style="height:60px;"></div>
 <div class="container">
+			<%= render :partial => "shared/flash_messages", :locals => {:flash => flash} %>
 	<%= yield %>
 </div>
 

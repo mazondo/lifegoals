@@ -1,0 +1,6 @@
+- flash.each do |type, message|
+  .row
+    .span12
+      .alert.fade.in{ "data-alert" => "alert", :class => notice_type(type) }
+        %a.close{:href => "#", 'data-dismiss' => "alert"} ×
+        = message

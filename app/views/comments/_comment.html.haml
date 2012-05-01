@@ -2,3 +2,4 @@
   %strong= comment.created_at.strftime("%b %d, %Y")
   \: 
   =auto_link(raw(highlight(comment)), :html => {:target => "_blank"})
+  = link_to "edit", edit_goal_comment_path(@goal, comment)

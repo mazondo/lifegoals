@@ -85,6 +85,6 @@ class CommentsController < ApplicationController
   private
   
   def grab_goal
-    @goal = Goal.find(params[:goal_id])
+    @goal = current_user.goals.find(params[:goal_id])
   end
 end

@@ -1,5 +1,10 @@
 Lifegoals::Application.routes.draw do
 
+  resources :users
+  resources :sessions
+  match "login" => 'sessions#new', :as => :login
+  match "logout" => 'sessions#destroy', :as => :logout
+  
   resources :goals do
     resources :comments
     resources :todos
