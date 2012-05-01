@@ -1,0 +1,30 @@
+-if params[:tag]
+  %h1
+    Showing Goals tagged with "
+    = params[:tag]
+    "
+- else
+  = simple_form_for(Goal.new, :html => {:class => "form-inline"}) do |f|
+    = f.error_notification
+    = f.input_field :title, :class => "span6", :placeholder => "Specific, Achievable and with a Timeline"
+    = f.button :submit, :class => "btn btn-primary"
+    
+%table.table.table-striped
+  %tr
+    %th Goal
+    %th Progress
+    %th
+
+  - @goals.each do |goal|
+    %tr
+      %td
+        = link_to goal.title, goal, :class => "goal"
+        %p
+          - goal.tags.each do |t|
+            = link_to t.name, tag_path(t.name), :class => "label label-success"
+      %td
+        .progress
+          .bar{:style => "width:#{goal.progress}%;"}
+      %td{:style => "width:25%;"}
+        = link_to 'Edit', edit_goal_path(goal), :class => "btn btn-mini"
+        = link_to 'Destroy', goal, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-mini btn-danger"

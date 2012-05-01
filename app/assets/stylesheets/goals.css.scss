@@ -1,0 +1,21 @@
+// Place all the styles related to the goals controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@mixin rounded-corners {
+border-radius:10px;
+-moz-border-radius:10px;
+-webkit-border-radius:10px;
+}
+.goal-status {
+background: whiteSmoke;
+border:1px solid #ddd;
+@include rounded-corners;
+padding:10px;
+}
+
+a.goal {
+font-weight:bolder;
+font-size:1.5em;
+letter-spacing:.1em;
+}

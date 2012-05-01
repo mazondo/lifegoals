@@ -1,0 +1,26 @@
+.row
+  .span8
+    %h1= @goal.title
+    %p
+      %strong Current Tags
+      - @goal.tags.each do |t|
+        %span.label.label-success= t.name
+    = simple_form_for([@goal, Comment.new], :html => {:class => "form-inline"}) do |f|
+      = f.error_notification
+      .form-inputs
+        = f.input_field :body, :as => "string", :class => "span6 offset1", :placeholder => "Just ran 3 miles add #intermediate and remove -beginner now 50% complete"
+        = f.button :submit, "Report In"
+    .updates
+      = render @goal.comments
+  .span4
+    .goal-status
+      %h3 Goal Status
+      .progress
+        .bar{:style => "width:#{@goal.progress}%"}
+      = link_to 'Edit', edit_goal_path(@goal), :class => "btn btn-mini"
+    %h3 Goal Checklist
+    %p here is where we will put a checklist for this goal, you can add items directly to the list or via the comments somehow (maybe "check: checklist item here" or similar).  The homepage will show the next action for each goal.  the next action is the top undone item in each list.
+    %h3 Sentiment
+    %p this is where I'll record a graph on how I feel about how each goal is going.  things like going well, progressing, difficult, challenging, etc.... Can be anything really, I'd like to record this sentiment with a SIMPLE graph, maybe even avoid numbers and use smiley faces instead...
+    %h3 Inspiration
+    %p this is where we will list iems from the comments that were recorded as inspiring.  can be quotes, websites, tips, tricks, photos, etc...  We will list a random sampling of them with a link to view them all...

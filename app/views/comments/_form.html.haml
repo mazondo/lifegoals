@@ -1,0 +1,9 @@
+= simple_form_for([@goal, @comment], :html => {:class => "form-horizontal"}) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :body
+
+  .form-actions
+    = f.button :submit, :class => "btn btn-primary"
+    = link_to "cancel", @goal, :class => "btn"
