@@ -1,4 +1,4 @@
 .comment
   %strong= comment.created_at.strftime("%b %d, %Y")
   \: 
-  =raw highlight(comment)
+  =auto_link(raw(highlight(comment)), :html => {:target => "_blank"})

@@ -5,10 +5,10 @@
       %p
         - goal.tags.each do |t|
           = link_to t.name, tag_path(t.name), :class => "label label-success"
-    - if goal.todos.first
+    - if goal.todos.next_action.first
       %p
         %strong Next Action: 
-        = link_to goal.todos.first.title, goal_todo_path(goal, goal.todos.first)
+        = link_to goal.todos.next_action.first.title, goal_todo_path(goal, goal.todos.next_action.first)
   %td
     .progress
       .bar{:style => "width:#{goal.progress}%;"}

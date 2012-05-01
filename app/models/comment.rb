@@ -12,7 +12,7 @@ class Comment < ActiveRecord::Base
   end
   
   def no_tag_reg
-    /\s+-\w+/
+    /(\s|\A)-(\w+)/
   end
   
   def percent_reg
@@ -42,7 +42,7 @@ class Comment < ActiveRecord::Base
 	  reg = no_tag_reg
 	  tags = body.scan(reg)
 	  unless tags.blank?
-	    tags.each do |p|
+	    tags.flatten.each do |p|
 	      p = p.gsub! "-", ""
       end
       all_tags = all_tags.flatten - tags.flatten

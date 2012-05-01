@@ -7,6 +7,7 @@ gem 'rails', '3.2.3'
 gem 'acts-as-taggable-on', '~> 2.2.2'
 gem 'simple_form'
 gem "haml-rails"
+gem 'rails_autolink'
 
 group :development do
 	gem 'sqlite3'
