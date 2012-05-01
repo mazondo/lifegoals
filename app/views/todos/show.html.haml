@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @todo.title
+%p
+  %b Complete:
+  = @todo.complete
+%p
+  %b Goal:
+  = @todo.goal_id
+
+= link_to 'Edit', edit_todo_path(@todo)
+\|
+= link_to 'Back', todos_path

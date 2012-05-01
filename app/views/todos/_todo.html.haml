@@ -1,0 +1,3 @@
+%li{:class => "#{todo.complete ? "done" : ''}"}
+  = todo.title
+  = link_to "edit", edit_goal_todo_path(@goal, todo)

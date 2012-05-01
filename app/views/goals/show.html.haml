@@ -13,13 +13,16 @@
     .updates
       = render @goal.comments
   .span4
-    .goal-status
+    .well
       %h3 Goal Status
       .progress
         .bar{:style => "width:#{@goal.progress}%"}
       = link_to 'Edit', edit_goal_path(@goal), :class => "btn btn-mini"
     %h3 Goal Checklist
-    %p here is where we will put a checklist for this goal, you can add items directly to the list or via the comments somehow (maybe "check: checklist item here" or similar).  The homepage will show the next action for each goal.  the next action is the top undone item in each list.
+    = simple_form_for [@goal, Todo.new], :html => {:class => "form-inline"} do |f|
+      = f.input_field :title, :placeholder => "What needs to happen?", :class => "span4"
+    %ul.checklist
+      = render @goal.todos
     %h3 Sentiment
     %p this is where I'll record a graph on how I feel about how each goal is going.  things like going well, progressing, difficult, challenging, etc.... Can be anything really, I'd like to record this sentiment with a SIMPLE graph, maybe even avoid numbers and use smiley faces instead...
     %h3 Inspiration

@@ -1,0 +1,4 @@
+$('#goals .headers').after("<%= escape_javascript(render(@goal))%>");
+$('#new_goal').each (function(){
+  this.reset();
+});

@@ -1,0 +1,17 @@
+%tr
+  %td
+    = link_to goal.title, goal, :class => "goal"
+    - if goal.tags
+      %p
+        - goal.tags.each do |t|
+          = link_to t.name, tag_path(t.name), :class => "label label-success"
+    - if goal.todos.first
+      %p
+        %strong Next Action: 
+        = link_to goal.todos.first.title, goal_todo_path(goal, goal.todos.first)
+  %td
+    .progress
+      .bar{:style => "width:#{goal.progress}%;"}
+  %td{:width => "60px;"}
+    = link_to(raw("<i class='icon-trash icon-white'></i>"), goal, :method => :delete, :confirm => "Are you sure?", :class => "btn btn-mini btn-danger")
+    = link_to raw('<i class="icon-edit"></i>'), edit_goal_path(goal), :class => "btn btn-mini"

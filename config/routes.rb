@@ -1,6 +1,8 @@
 Lifegoals::Application.routes.draw do
+
   resources :goals do
     resources :comments
+    resources :todos
   end
   
   root :to => "goals#index"
