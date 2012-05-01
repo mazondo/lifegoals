@@ -12,7 +12,7 @@ class Comment < ActiveRecord::Base
   end
   
   def no_tag_reg
-    /-\w+/
+    /\s+-\w+/
   end
   
   def percent_reg
