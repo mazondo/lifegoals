@@ -13,7 +13,6 @@
   %tr
     %th Goal
     %th Progress
-    %th
 
   - @goals.each do |goal|
     %tr
@@ -25,6 +24,3 @@
       %td
         .progress
           .bar{:style => "width:#{goal.progress}%;"}
-      %td{:style => "width:25%;"}
-        = link_to 'Edit', edit_goal_path(goal), :class => "btn btn-mini"
-        = link_to 'Destroy', goal, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-mini btn-danger"
