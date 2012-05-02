@@ -40,7 +40,7 @@
       = render @goal.todos
     - @goal.comments.tag_counts_on(:tags).each do |t|
       %h3
-        = t.name.plural
+        = t.name
         = "(#{t.count})"
       = render @goal.comments.tagged_with(t.name).limit(5)
     %h3 Sentiment
