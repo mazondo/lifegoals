@@ -8,7 +8,7 @@
     - if goal.todos.next_action.first
       %p
         %strong Next Action: 
-        = link_to goal.todos.next_action.first.title, goal_todo_path(goal, goal.todos.next_action.first)
+        = link_to goal.todos.next_action.first.title, edit_goal_todo_path(goal, goal.todos.next_action.first)
   %td
     .progress
       .bar{:style => "width:#{goal.progress}%;"}
