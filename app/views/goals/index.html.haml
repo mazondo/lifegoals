@@ -8,25 +8,38 @@
     - else
       = simple_form_for(Goal.new, :remote => true, :html => {:class => "form-inline"}) do |f|
         = f.error_notification
-        = f.input_field :title, :class => "span6", :placeholder => "Specific, Achievable and with a Timeline"
+        = f.input_field :title, :class => "span7", :style => "font-size:22px;padding:5px;line-height:26px;", :placeholder => "Specific, Achievable and with a Timeline"
         = f.button :submit, :class => "btn btn-primary"
-    - unless @goals.blank?
-      %table.table.table-striped#goals
-        %tr.headers
-          %th Goal
-          %th Progress
-          %th
-        = render @goals
-    - else
-      .well
-        %h2 Welcome to LifeGoals
-        %p
-          To get started, just add a goal that you're interested in accomplishing in the bar above.
-        %p
-          Remember, keep them short, sweet and measurable.  Deadlines are a good idea as well.
-          %strong "Eat 3 krispy kreme donuts a day for a year"
-          is always better than
-          %strong "Get Fat"!
+    .tabbable
+      %ul.nav.nav-tabs
+        %li.active= link_to "Current", "#tab1", "data-toggle" => "tab"
+        %li= link_to "Completed", "#tab2", "data-toggle" => "tab"
+      .tab-content
+        .tab-pane.active#tab1
+          - unless @goals.blank?
+            %table.table.table-striped#goals
+              %tr.headers
+                %th Goal
+                %th Progress
+                %th
+              = render @goals
+          - else
+            .well
+              %h2 Welcome to LifeGoals
+              %p
+                To get started, just add a goal that you're interested in accomplishing in the bar above.
+              %p
+                Remember, keep them short, sweet and measurable.  Deadlines are a good idea as well.
+                %strong "Eat 3 krispy kreme donuts a day for a year"
+                is always better than
+                %strong "Get Fat"!
+        .tab-pane#tab2
+          %table.table.table-striped
+            %tr.headers
+              %th Goal
+              %th Progress
+              %th
+            = render @completed
   .span4
     .well
       %h1= pluralize(@goals.size, "Goal")

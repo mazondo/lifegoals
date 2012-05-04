@@ -5,7 +5,8 @@ class GoalsController < ApplicationController
     if params[:tag]
       @goals = current_user.goals.tagged_with(params[:tag])
     else
-      @goals = current_user.goals.all
+      @goals = current_user.goals.where("progress < ? OR progress IS NULL", 100).all
+      @completed = current_user.goals.where("progress >= ?", 100).all
     end
     respond_to do |format|
       format.html # index.html.erb
