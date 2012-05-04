@@ -1,28 +1,40 @@
--if params[:tag]
-  %h1
-    Showing Goals tagged with "
-    = params[:tag]
-    "
-- else
-  = simple_form_for(Goal.new, :remote => true, :html => {:class => "form-inline"}) do |f|
-    = f.error_notification
-    = f.input_field :title, :class => "span6", :placeholder => "Specific, Achievable and with a Timeline"
-    = f.button :submit, :class => "btn btn-primary"
-- unless @goals.blank?
-  %table.table.table-striped#goals
-    %tr.headers
-      %th Goal
-      %th Progress
-      %th
-    = render @goals
-- else
-  .well
-    %h2 Welcome to LifeGoals
-    %p
-      To get started, just add a goal that you're interested in accomplishing in the bar above.
-    %p
-      Remember, keep them short, sweet and measurable.  Deadlines are a good idea as well.
-      %strong "Eat 3 krispy kreme donuts a day for a year"
-      is always better than
-      %strong "Get Fat"!
-
+.row
+  .span8
+    -if params[:tag]
+      %h1
+        Showing Goals tagged with "
+        = params[:tag]
+        "
+    - else
+      = simple_form_for(Goal.new, :remote => true, :html => {:class => "form-inline"}) do |f|
+        = f.error_notification
+        = f.input_field :title, :class => "span6", :placeholder => "Specific, Achievable and with a Timeline"
+        = f.button :submit, :class => "btn btn-primary"
+    - unless @goals.blank?
+      %table.table.table-striped#goals
+        %tr.headers
+          %th Goal
+          %th Progress
+          %th
+        = render @goals
+    - else
+      .well
+        %h2 Welcome to LifeGoals
+        %p
+          To get started, just add a goal that you're interested in accomplishing in the bar above.
+        %p
+          Remember, keep them short, sweet and measurable.  Deadlines are a good idea as well.
+          %strong "Eat 3 krispy kreme donuts a day for a year"
+          is always better than
+          %strong "Get Fat"!
+  .span4
+    .well
+      %h1= pluralize(@goals.size, "Goal")
+    .well
+      %h3 Recent Updates
+      - current_user.comments.order("created_at DESC").limit(5).each do |comment|
+        .comment
+          = comment.body
+          %br
+          %strong Goal: 
+          = link_to comment.goal.title, comment.goal

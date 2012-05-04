@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   
   has_many :goals, :dependent => :destroy
+  has_many :comments, :through => :goals
 end

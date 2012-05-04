@@ -1,6 +1,6 @@
 class Goal < ActiveRecord::Base
   attr_accessible :progress, :title
-  default_scope :order => "created_at DESC"
+  default_scope :order => "updated_at DESC"
   acts_as_taggable_on :tags
   acts_as_tagger
   

@@ -5,7 +5,8 @@ class Comment < ActiveRecord::Base
   
   validates_presence_of :body, :goal_id
   
-  belongs_to :goal
+  belongs_to :goal, :touch => true
+  belongs_to :user
   
   before_save :parse_comment_for_goal_changes
   before_save :parse_comment_for_comment_tags
