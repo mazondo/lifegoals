@@ -11,10 +11,10 @@ Once installed, you will need to create an account and login.  Once you're logge
 
 Once you have some goals down, you can open one to view the goal dashboard, there are some cool things you can do on your dashboard:
 
- - comments: add comments and updates on your progress to reaching that goal
- - Track progress: including a percentage, like "now 50% completed" will update the progress bar of the goal to 50%.  adding "100%" to a comment will mark the goal as completed.
- - Manage Tags: any word with a hash "#" in front of it will add a tag to the goal.  any word with a minus "-" in front of it will remove that tag from the goal.
- - Collect Resources: use the asterisk "*" before a word to store a comment as a resource.  You can have unlimited resource categories.  For example, adding "*websites" to a comment will add that comment to a list called "websites".
+ * comments: add comments and updates on your progress to reaching that goal
+ * Track progress: including a percentage, like "now 50% completed" will update the progress bar of the goal to 50%.  adding "100%" to a comment will mark the goal as completed.
+ * Manage Tags: any word with a hash "#" in front of it will add a tag to the goal.  any word with a minus "-" in front of it will remove that tag from the goal.
+ * Collect Resources: use the asterisk "*" before a word to store a comment as a resource.  You can have unlimited resource categories.  For example, adding "*websites" to a comment will add that comment to a list called "websites".
 
 == ummmmm....what?
 Yeah, I know, it's a lot to take in without a demonstration....
